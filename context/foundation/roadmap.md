@@ -3,7 +3,7 @@ project: "10xCards"
 version: 1
 status: draft
 created: 2026-09-11
-updated: 2026-09-11
+updated: 2026-09-12
 prd_version: 1
 main_goal: market-feedback
 top_blocker: time
@@ -40,7 +40,7 @@ Studenci rezygnują ze spaced repetition, bo tworzenie fiszek zabiera 2–5 minu
 
 | ID   | Change ID                | Outcome (user can …)                                                  | Prerequisites | PRD refs                                  | Status   |
 | ---- | ------------------------ | --------------------------------------------------------------------- | ------------- | ----------------------------------------- | -------- |
-| F-01 | data-schema-setup        | (foundation) EF Core + baza danych + schemat bazowy                   | —             | all FRs (persistence)                     | ready    |
+| F-01 | data-schema-setup        | (foundation) EF Core + baza danych + schemat bazowy                   | —             | all FRs (persistence)                     | planning |
 | F-02 | auth-magic-link          | (foundation) Passwordless auth (magic link) + middleware autoryzacji   | F-01          | FR-001, FR-002, FR-003, Access Control    | proposed |
 | S-01 | first-gated-generation   | Generuje fiszki AI z wklejonego tekstu, akceptuje/edytuje/odrzuca     | F-01, F-02    | US-01, FR-004–FR-008                      | proposed |
 | S-02 | manual-flashcard-creation| Tworzy fiszkę ręcznie (pytanie i odpowiedź)                           | F-01, F-02    | US-02, FR-009                             | proposed |
@@ -80,7 +80,7 @@ Stan codebase'u na 2026-09-11 (zbadany automatycznie + potwierdzony przez użytk
 - **Blockers:** —
 - **Unknowns:** —
 - **Risk:** Schemat może wymagać rozszerzenia przy S-04 (pola SM-2: interval, easiness, repetitions, next_review). Minimalny schemat teraz; rozszerzenie w slajsie, który tego potrzebuje.
-- **Status:** ready
+- **Status:** planning
 
 ### F-02: Auth scaffold (magic link)
 
