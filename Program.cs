@@ -1,10 +1,15 @@
+using Microsoft.EntityFrameworkCore;
+using _10x_cards.Data;
+
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
-// Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
 builder.Services.AddOpenApi();
+builder.Services.AddDbContext<ApplicationDbContext>(options =>
+    options.UseSqlite(builder.Configuration.GetConnectionString("DefaultConnection")));
 
 var app = builder.Build();
+
+Directory.CreateDirectory("./db/");
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
@@ -21,6 +26,22 @@ var summaries = new[]
 
 app.MapGet("/health", () => Results.Ok("healthy"))
     .WithName("HealthCheck");
+
+app.MapGet("/db-health", async (ApplicationDbContext db) =>
+{
+    try
+    {
+        var canConnect = await db.Database.CanConnectAsync();
+        return canConnect
+            ? Results.Ok(new { status = "healthy", database = "connected" })
+            : Results.Json(new { status = "unhealthy", database = "cannot connect" }, statusCode: 503);
+    }
+    catch (Exception ex)
+    {
+        return Results.Json(new { status = "unhealthy", error = ex.Message }, statusCode: 503);
+    }
+})
+.WithName("DbHealthCheck");
 
 app.MapGet("/weatherforecast", () =>
 {

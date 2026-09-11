@@ -173,14 +173,14 @@ This is the first migration on a greenfield project — no existing data, no bac
 
 #### Automated
 
-- [ ] 1.1 Project builds without errors
-- [ ] 1.2 EF Core migration generates cleanly
-- [ ] 1.3 Database update applies without errors
-- [ ] 1.4 SQLite file exists at ./data/10xcards.db
-- [ ] 1.5 Existing tests still pass
+- [x] 1.1 Project builds without errors
+- [x] 1.2 EF Core migration generates cleanly
+- [x] 1.3 Database update applies without errors
+- [x] 1.4 SQLite file exists at ./data/10xcards.db
+- [x] 1.5 Existing tests still pass
 
 #### Manual
 
-- [ ] 1.6 /health endpoint returns "healthy"
-- [ ] 1.7 /db-health endpoint returns success
-- [ ] 1.8 SQLite DB contains correct tables and columns
+- [x] 1.6 /health endpoint returns "healthy"
+- [x] 1.7 /db-health endpoint returns success
+- [x] 1.8 SQLite DB contains correct tables and columns
