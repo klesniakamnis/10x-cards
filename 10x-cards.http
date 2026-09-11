@@ -1,0 +1,6 @@
+@_10x_cards_HostAddress = http://localhost:5285
+
+GET {{_10x_cards_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
