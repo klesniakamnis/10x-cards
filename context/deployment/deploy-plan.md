@@ -2,7 +2,7 @@
 
 ## Context
 
-The 10xCards project is a freshly scaffolded ASP.NET Core 9.0 webapi (weatherforecast sample). No git, no .gitignore, no CI/CD config. The infrastructure decision (`context/foundation/infrastructure.md`) recommends Azure App Service F1 (free tier, Linux, westeurope region). This plan gets the scaffolded app deployed and responding on a public URL as a smoke test — before any feature work begins.
+The 10xCards project is a freshly scaffolded ASP.NET Core 9.0 webapi (weatherforecast sample). No git, no .gitignore, no CI/CD config. The infrastructure decision (`context/foundation/infrastructure.md`) recommends Azure App Service F1 (free tier, Linux). Deployed to swedencentral (westeurope rejected new F1 customers). This plan gets the scaffolded app deployed and responding on a public URL as a smoke test — before any feature work begins.
 
 ## Prerequisites to verify
 
@@ -47,10 +47,10 @@ Run `az --version`. If not installed:
 
 ```powershell
 dotnet publish -c Release -o ./publish
-az webapp up --name 10x-cards --resource-group 10x-cards-rg --runtime "DOTNETCORE:9.0" --sku F1 --os-type Linux --location westeurope
+az webapp up --name 10x-cards --resource-group 10x-cards-rg --runtime "DOTNETCORE:9.0" --sku F1 --os-type Linux --location swedencentral
 ```
 
-`az webapp up` creates the Resource Group, App Service Plan, and App in one command. Uses westeurope (Netherlands) for lowest latency to Polish users.
+`az webapp up` creates the Resource Group, App Service Plan, and App in one command. Uses swedencentral (westeurope rejected new F1 customers at time of deployment).
 
 ### 6. Verify deployment
 
