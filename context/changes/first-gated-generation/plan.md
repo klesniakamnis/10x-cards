@@ -385,16 +385,16 @@ No new EF Core migration is needed for S-01. The existing Flashcard schema (Ques
 
 #### Automated
 
-- [x] 3.1 Project builds without errors
-- [x] 3.2 Application starts without errors
+- [x] 3.1 Project builds without errors — 1bcb8a8
+- [x] 3.2 Application starts without errors — 1bcb8a8
 
 #### Manual
 
-- [x] 3.3 Full end-to-end flow works (paste → generate → accept/reject → summary)
-- [x] 3.4 Accept creates Flashcard in database
-- [x] 3.5 Reject removes card without DB record
-- [x] 3.6 Edit allows modifying Q/A before accepting, saves modified text
-- [x] 3.7 Character counter and input validation work
-- [x] 3.8 Loading spinner displays during generation
-- [x] 3.9 Error message displays on generation failure
-- [x] 3.10 Summary shows correct count and allows generating more
+- [x] 3.3 Full end-to-end flow works (paste → generate → accept/reject → summary) — 1bcb8a8
+- [x] 3.4 Accept creates Flashcard in database — 1bcb8a8
+- [x] 3.5 Reject removes card without DB record — 1bcb8a8
+- [x] 3.6 Edit allows modifying Q/A before accepting, saves modified text — 1bcb8a8
+- [x] 3.7 Character counter and input validation work — 1bcb8a8
+- [x] 3.8 Loading spinner displays during generation — 1bcb8a8
+- [x] 3.9 Error message displays on generation failure — 1bcb8a8
+- [x] 3.10 Summary shows correct count and allows generating more — 1bcb8a8
