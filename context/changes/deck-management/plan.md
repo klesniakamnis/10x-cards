@@ -213,16 +213,16 @@ No migration needed. The Flashcard entity and all required fields already exist.
 
 #### Automated
 
-- [x] 2.1 Project builds without errors
-- [x] 2.2 Application starts without errors
+- [x] 2.1 Project builds without errors — b2259b8
+- [x] 2.2 Application starts without errors — b2259b8
 
 #### Manual
 
-- [x] 2.3 "Moja talia" link visible in header before "Dodaj fiszkę"
-- [x] 2.4 Deck page shows all user's flashcards as cards
-- [x] 2.5 Cards ordered by newest first with question, answer, source, date
-- [x] 2.6 Inline edit works: textarea swap, save updates card, cancel reverts
-- [x] 2.7 Edit validation prevents empty fields
-- [x] 2.8 Delete shows confirm dialog, confirmed delete removes card with fade-out
-- [x] 2.9 Empty deck shows friendly empty state message
-- [x] 2.10 Unauthenticated user redirected to /LoginRequired
+- [x] 2.3 "Moja talia" link visible in header before "Dodaj fiszkę" — b2259b8
+- [x] 2.4 Deck page shows all user's flashcards as cards — b2259b8
+- [x] 2.5 Cards ordered by newest first with question, answer, source, date — b2259b8
+- [x] 2.6 Inline edit works: textarea swap, save updates card, cancel reverts — b2259b8
+- [x] 2.7 Edit validation prevents empty fields — b2259b8
+- [x] 2.8 Delete shows confirm dialog, confirmed delete removes card with fade-out — b2259b8
+- [x] 2.9 Empty deck shows friendly empty state message — b2259b8
+- [x] 2.10 Unauthenticated user redirected to /LoginRequired — b2259b8
