@@ -248,16 +248,16 @@ Two migrations total: `AddAuthTables` (Phase 1) creates MagicLinkToken and AuthS
 
 #### Automated
 
-- [x] 2.1 Project builds without errors
-- [x] 2.2 Migration applies without errors
-- [x] 2.3 Existing tests still pass
+- [x] 2.1 Project builds without errors — 0650781
+- [x] 2.2 Migration applies without errors — 0650781
+- [x] 2.3 Existing tests still pass — 0650781
 
 #### Manual
 
-- [x] 2.4 GET /health returns 200
-- [x] 2.5 GET /weatherforecast returns 401
-- [x] 2.6 POST /api/auth/login logs magic link to console
-- [x] 2.7 GET callback URL signs in and redirects
-- [x] 2.8 GET /api/auth/me returns user info after sign-in
-- [x] 2.9 POST /api/auth/logout clears session
-- [x] 2.10 Expired/used token returns generic error
+- [x] 2.4 GET /health returns 200 — 0650781
+- [x] 2.5 GET /weatherforecast returns 401 — 0650781
+- [x] 2.6 POST /api/auth/login logs magic link to console — 0650781
+- [x] 2.7 GET callback URL signs in and redirects — 0650781
+- [x] 2.8 GET /api/auth/me returns user info after sign-in — 0650781
+- [x] 2.9 POST /api/auth/logout clears session — 0650781
+- [x] 2.10 Expired/used token returns generic error — 0650781
