@@ -1,0 +1,37 @@
+@page "/study"
+@model _10x_cards.Pages.StudyModel
+
+<div class="study-page">
+    <h1>Sesja nauki</h1>
+    <div id="study-error" hidden></div>
+    <div id="study-empty" hidden>
+        <p>Nie masz fiszek do powtórki.</p>
+        <p><a href="/create">Dodaj fiszkę</a> lub <a href="/">wygeneruj fiszki z tekstu</a>.</p>
+    </div>
+    <div id="study-card" hidden>
+        <div class="study-progress"></div>
+        <div class="study-card-inner">
+            <div class="study-question"></div>
+            <div class="study-answer" hidden></div>
+            <button class="study-reveal-btn btn-primary" type="button">Pokaż odpowiedź</button>
+            <div class="grade-buttons" hidden>
+                <button class="grade-btn grade-btn--fail" data-grade="0">0 – Nie wiem</button>
+                <button class="grade-btn grade-btn--fail" data-grade="1">1 – Źle</button>
+                <button class="grade-btn grade-btn--fail" data-grade="2">2 – Prawie</button>
+                <button class="grade-btn grade-btn--hard" data-grade="3">3 – Trudno</button>
+                <button class="grade-btn grade-btn--good" data-grade="4">4 – Dobrze</button>
+                <button class="grade-btn grade-btn--good" data-grade="5">5 – Idealnie</button>
+            </div>
+            <div class="grade-error" hidden></div>
+        </div>
+    </div>
+    <div id="study-summary" hidden>
+        <h2>Sesja zakończona!</h2>
+        <p class="summary-count"></p>
+        <a href="/deck" class="btn-primary summary-link">Wróć do talii</a>
+    </div>
+</div>
+
+@section Scripts {
+    <script src="/js/study.js"></script>
+}

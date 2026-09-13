@@ -26,6 +26,10 @@
     --transition: 0.2s ease;
 }
 
+[hidden] {
+    display: none !important;
+}
+
 body {
     font-family: var(--font-family);
     background: var(--color-bg);
@@ -504,4 +508,129 @@ body {
     padding: 0.15rem 0.35rem;
     border-radius: 3px;
     font-size: 0.85em;
+}
+
+/* Study page */
+.study-page {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.study-page h1 {
+    font-size: 1.5rem;
+    font-weight: 700;
+}
+
+.study-progress {
+    font-size: 0.85rem;
+    color: var(--color-text-secondary);
+    margin-bottom: 0.5rem;
+}
+
+.study-card-inner {
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius);
+    padding: 1.5rem;
+}
+
+.study-question {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    margin-bottom: 1rem;
+}
+
+.study-answer {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    margin-bottom: 1rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--color-border);
+    color: var(--color-text);
+}
+
+.study-reveal-btn {
+    width: 100%;
+    padding: 0.75rem;
+    font-size: 1rem;
+}
+
+.grade-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 0.5rem;
+}
+
+.grade-btn {
+    flex: 1 1 calc(33.333% - 0.34rem);
+    padding: 0.6rem 0.25rem;
+    border: none;
+    border-radius: var(--radius);
+    cursor: pointer;
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: #fff;
+    transition: opacity var(--transition);
+}
+
+.grade-btn:hover {
+    opacity: 0.85;
+}
+
+.grade-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.grade-btn--fail {
+    background: var(--color-danger);
+}
+
+.grade-btn--hard {
+    background: #ffc107;
+    color: #212529;
+}
+
+.grade-btn--good {
+    background: var(--color-success);
+}
+
+.grade-error {
+    margin-top: 0.5rem;
+    font-size: 0.85rem;
+    color: #842029;
+}
+
+#study-empty {
+    text-align: center;
+    padding: 2rem;
+    color: var(--color-text-secondary);
+}
+
+#study-empty a {
+    color: var(--color-primary);
+}
+
+#study-summary {
+    text-align: center;
+    padding: 2rem;
+}
+
+#study-summary h2 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+.summary-count {
+    font-size: 1.1rem;
+    color: var(--color-text-secondary);
+    margin-bottom: 1.5rem;
+}
+
+.summary-link {
+    display: inline-block;
+    text-decoration: none;
+    padding: 0.6rem 1.5rem;
 }

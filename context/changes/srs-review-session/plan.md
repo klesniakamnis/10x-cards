@@ -275,9 +275,9 @@ The migration adds 4 non-nullable columns with defaults to the Flashcards table.
 
 #### Automated
 
-- [x] 1.1 Project builds without errors
-- [x] 1.2 Migration applies cleanly
-- [x] 1.3 Application starts without errors
+- [x] 1.1 Project builds without errors — e34d32a
+- [x] 1.2 Migration applies cleanly — e34d32a
+- [x] 1.3 Application starts without errors — e34d32a
 
 #### Manual
 
@@ -294,8 +294,8 @@ The migration adds 4 non-nullable columns with defaults to the Flashcards table.
 
 #### Automated
 
-- [ ] 2.1 Project builds without errors
-- [ ] 2.2 Application starts without errors
+- [x] 2.1 Project builds without errors
+- [x] 2.2 Application starts without errors
 
 #### Manual
 
