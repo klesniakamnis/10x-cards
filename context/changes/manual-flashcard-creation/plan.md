@@ -145,14 +145,14 @@ No migration needed. The `Flashcard` entity and `FlashcardSource.Manual` enum va
 
 #### Automated
 
-- [x] 1.1 Project builds without errors
-- [x] 1.2 Application starts without errors
+- [x] 1.1 Project builds without errors — 3928301
+- [x] 1.2 Application starts without errors — 3928301
 
 #### Manual
 
-- [x] 1.3 Authenticated user sees "Dodaj fiszkę" link in header
-- [x] 1.4 Clicking link navigates to /create
-- [x] 1.5 Valid Q/A creates flashcard with Source = Manual
-- [x] 1.6 Success message appears and form clears after creation
-- [x] 1.7 Empty fields show validation error
-- [x] 1.8 Unauthenticated user redirected to /LoginRequired
+- [x] 1.3 Authenticated user sees "Dodaj fiszkę" link in header — 3928301
+- [x] 1.4 Clicking link navigates to /create — 3928301
+- [x] 1.5 Valid Q/A creates flashcard with Source = Manual — 3928301
+- [x] 1.6 Success message appears and form clears after creation — 3928301
+- [x] 1.7 Empty fields show validation error — 3928301
+- [x] 1.8 Unauthenticated user redirected to /LoginRequired — 3928301
