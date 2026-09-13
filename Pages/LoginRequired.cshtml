@@ -1,0 +1,14 @@
+@page "/LoginRequired"
+@model _10x_cards.Pages.LoginRequiredModel
+
+<div class="login-required">
+    <h1>Wymagane logowanie</h1>
+    <p>Aby korzystać z 10xCards, musisz się zalogować za pomocą magic link.</p>
+    @if (Model.IsDevelopment)
+    {
+        <div class="dev-note">
+            <strong>Tryb deweloperski:</strong> Wyślij POST na <code>/api/auth/login</code> z adresem email,
+            a następnie otwórz URL z logów konsoli.
+        </div>
+    }
+</div>

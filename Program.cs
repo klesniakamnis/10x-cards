@@ -9,6 +9,7 @@ using _10x_cards.Services;
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddOpenApi();
+builder.Services.AddRazorPages();
 var dbPath = Path.Combine(builder.Environment.ContentRootPath, "db", "10xcards.db");
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseSqlite($"Data Source={dbPath}"));
@@ -29,7 +30,13 @@ builder.Services.AddOptions<CookieAuthenticationOptions>(CookieAuthenticationDef
         options.SessionStore = store;
         options.Events.OnRedirectToLogin = context =>
         {
-            context.Response.StatusCode = 401;
+            if (context.Request.Headers.Accept.ToString().Contains("application/json"))
+            {
+                context.Response.StatusCode = 401;
+                return Task.CompletedTask;
+            }
+
+            context.Response.Redirect("/LoginRequired");
             return Task.CompletedTask;
         };
     });
@@ -52,6 +59,7 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+app.UseStaticFiles();
 app.UseAuthentication();
 app.UseAuthorization();
 
@@ -97,6 +105,8 @@ app.MapGet("/weatherforecast", () =>
 .WithName("GetWeatherForecast");
 
 app.MapAuthEndpoints();
+
+app.MapRazorPages();
 
 app.Run();
 
