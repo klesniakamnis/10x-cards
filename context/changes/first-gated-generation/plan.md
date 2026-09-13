@@ -355,31 +355,31 @@ No new EF Core migration is needed for S-01. The existing Flashcard schema (Ques
 
 #### Automated
 
-- [x] 1.1 Project builds without errors
-- [x] 1.2 Application starts without errors
+- [x] 1.1 Project builds without errors — 69f2f75
+- [x] 1.2 Application starts without errors — 69f2f75
 
 #### Manual
 
-- [x] 1.3 Authenticated user sees Generate page with layout
-- [x] 1.4 Unauthenticated user is redirected to LoginRequired
-- [x] 1.5 API requests still receive 401 (not redirect)
-- [x] 1.6 Character counter displays and updates
-- [x] 1.7 Logout link works
+- [x] 1.3 Authenticated user sees Generate page with layout — 69f2f75
+- [x] 1.4 Unauthenticated user is redirected to LoginRequired — 69f2f75
+- [x] 1.5 API requests still receive 401 (not redirect) — 69f2f75
+- [x] 1.6 Character counter displays and updates — 69f2f75
+- [x] 1.7 Logout link works — 69f2f75
 
 ### Phase 2: AI Service + Generation Endpoint
 
 #### Automated
 
-- [ ] 2.1 Project builds without errors
-- [ ] 2.2 Application starts in Development mode (dev stub active)
+- [x] 2.1 Project builds without errors
+- [x] 2.2 Application starts in Development mode (dev stub active)
 
 #### Manual
 
-- [ ] 2.3 POST /api/generation with valid text returns proposals (dev stub)
-- [ ] 2.4 POST /api/generation with empty text returns 400
-- [ ] 2.5 POST /api/generation with >10,000 chars returns 400
-- [ ] 2.6 POST /api/generation without auth returns 401
-- [ ] 2.7 Real OpenAI integration returns proposals (when API key configured)
+- [x] 2.3 POST /api/generation with valid text returns proposals (dev stub)
+- [x] 2.4 POST /api/generation with empty text returns 400
+- [x] 2.5 POST /api/generation with >10,000 chars returns 400
+- [x] 2.6 POST /api/generation without auth returns 401
+- [x] 2.7 Real OpenAI integration returns proposals (when API key configured)
 
 ### Phase 3: Flashcard Creation + Frontend Integration
 

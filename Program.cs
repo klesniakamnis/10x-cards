@@ -1,6 +1,8 @@
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.AI;
+using OpenAI;
 using _10x_cards.Auth;
 using _10x_cards.Data;
 using _10x_cards.Endpoints;
@@ -16,6 +18,18 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
 
 builder.Services.AddSingleton<IEmailSender, ConsoleEmailSender>();
 builder.Services.AddSingleton<ITicketStore, DbSessionStore>();
+
+if (builder.Environment.IsDevelopment())
+{
+    builder.Services.AddScoped<IFlashcardGenerator, DevFlashcardGenerator>();
+}
+else
+{
+    var apiKey = builder.Configuration["OpenAI:ApiKey"]
+        ?? throw new InvalidOperationException("OpenAI:ApiKey configuration is required in non-Development environments.");
+    builder.Services.AddSingleton(new OpenAIClient(apiKey).GetChatClient("gpt-4o-mini").AsIChatClient());
+    builder.Services.AddScoped<IFlashcardGenerator, OpenAiFlashcardGenerator>();
+}
 
 builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
     .AddCookie();
@@ -105,6 +119,7 @@ app.MapGet("/weatherforecast", () =>
 .WithName("GetWeatherForecast");
 
 app.MapAuthEndpoints();
+app.MapGenerationEndpoints();
 
 app.MapRazorPages();
 
