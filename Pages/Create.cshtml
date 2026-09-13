@@ -1,0 +1,21 @@
+@page "/create"
+@model _10x_cards.Pages.CreateModel
+
+<div class="create-page">
+    <h1>Dodaj fiszkę</h1>
+    <div class="form-section">
+        <label for="question">Pytanie:</label>
+        <textarea id="question" maxlength="5000" placeholder="Wpisz pytanie..."></textarea>
+    </div>
+    <div class="form-section">
+        <label for="answer">Odpowiedź:</label>
+        <textarea id="answer" maxlength="5000" placeholder="Wpisz odpowiedź..."></textarea>
+    </div>
+    <div id="create-error"></div>
+    <div id="create-success"></div>
+    <button id="create-btn" class="btn-primary">Dodaj</button>
+</div>
+
+@section Scripts {
+    <script src="/js/create.js"></script>
+}
