@@ -197,32 +197,32 @@ No migration needed. The Flashcard entity and all required fields already exist.
 
 #### Automated
 
-- [x] 1.1 Project builds without errors
-- [x] 1.2 Application starts without errors
+- [x] 1.1 Project builds without errors — d5ee3be
+- [x] 1.2 Application starts without errors — d5ee3be
 
 #### Manual
 
-- [x] 1.3 GET /api/flashcards returns user's cards ordered by newest first
-- [x] 1.4 PUT /api/flashcards/{id} updates question/answer
-- [x] 1.5 PUT with empty question returns 400
-- [x] 1.6 PUT with wrong user's card returns 404
-- [x] 1.7 DELETE /api/flashcards/{id} removes card, returns 204
-- [x] 1.8 DELETE with wrong user's card returns 404
+- [x] 1.3 GET /api/flashcards returns user's cards ordered by newest first — d5ee3be
+- [x] 1.4 PUT /api/flashcards/{id} updates question/answer — d5ee3be
+- [x] 1.5 PUT with empty question returns 400 — d5ee3be
+- [x] 1.6 PUT with wrong user's card returns 404 — d5ee3be
+- [x] 1.7 DELETE /api/flashcards/{id} removes card, returns 204 — d5ee3be
+- [x] 1.8 DELETE with wrong user's card returns 404 — d5ee3be
 
 ### Phase 2: Deck Page + Frontend
 
 #### Automated
 
-- [ ] 2.1 Project builds without errors
-- [ ] 2.2 Application starts without errors
+- [x] 2.1 Project builds without errors
+- [x] 2.2 Application starts without errors
 
 #### Manual
 
-- [ ] 2.3 "Moja talia" link visible in header before "Dodaj fiszkę"
-- [ ] 2.4 Deck page shows all user's flashcards as cards
-- [ ] 2.5 Cards ordered by newest first with question, answer, source, date
-- [ ] 2.6 Inline edit works: textarea swap, save updates card, cancel reverts
-- [ ] 2.7 Edit validation prevents empty fields
-- [ ] 2.8 Delete shows confirm dialog, confirmed delete removes card with fade-out
-- [ ] 2.9 Empty deck shows friendly empty state message
-- [ ] 2.10 Unauthenticated user redirected to /LoginRequired
+- [x] 2.3 "Moja talia" link visible in header before "Dodaj fiszkę"
+- [x] 2.4 Deck page shows all user's flashcards as cards
+- [x] 2.5 Cards ordered by newest first with question, answer, source, date
+- [x] 2.6 Inline edit works: textarea swap, save updates card, cancel reverts
+- [x] 2.7 Edit validation prevents empty fields
+- [x] 2.8 Delete shows confirm dialog, confirmed delete removes card with fade-out
+- [x] 2.9 Empty deck shows friendly empty state message
+- [x] 2.10 Unauthenticated user redirected to /LoginRequired

@@ -324,6 +324,108 @@ body {
     pointer-events: none;
 }
 
+/* Deck page */
+.deck-page {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.deck-page h1 {
+    font-size: 1.5rem;
+    font-weight: 700;
+}
+
+#deck-empty {
+    text-align: center;
+    padding: 2rem;
+    color: var(--color-text-secondary);
+}
+
+#deck-empty a {
+    color: var(--color-primary);
+}
+
+#deck-container {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.deck-card {
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius);
+    padding: 1.25rem;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.deck-card .card-section {
+    margin-bottom: 0.75rem;
+}
+
+.deck-card .card-label {
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--color-text-secondary);
+    margin-bottom: 0.25rem;
+}
+
+.deck-card .card-text {
+    font-size: 0.95rem;
+    line-height: 1.5;
+}
+
+.deck-card .card-meta {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 0.75rem;
+    font-size: 0.8rem;
+    color: var(--color-text-secondary);
+}
+
+.source-badge {
+    display: inline-block;
+    padding: 0.15rem 0.5rem;
+    border-radius: 999px;
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.source-badge--ai {
+    background: #e0cffc;
+    color: #5a2d82;
+}
+
+.source-badge--manual {
+    background: #d1e7dd;
+    color: #0f5132;
+}
+
+.deck-card .card-actions {
+    display: flex;
+    gap: 0.5rem;
+    padding-top: 0.75rem;
+    border-top: 1px solid var(--color-border);
+}
+
+.deck-card .edit-textarea {
+    width: 100%;
+    min-height: 80px;
+    padding: 0.5rem;
+    border: 1px solid var(--color-primary);
+    border-radius: 4px;
+    font-family: var(--font-family);
+    font-size: 0.95rem;
+    line-height: 1.5;
+    resize: vertical;
+}
+
 /* Create page */
 .create-page {
     display: flex;

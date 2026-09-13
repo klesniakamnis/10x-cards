@@ -13,6 +13,7 @@
             @if (User.Identity?.IsAuthenticated == true)
             {
                 <div class="user-info">
+                    <a href="/deck" class="nav-link">Moja talia</a>
                     <a href="/create" class="nav-link">Dodaj fiszkę</a>
                     <span class="user-email">@User.FindFirst(System.Security.Claims.ClaimTypes.Email)?.Value</span>
                     <form class="logout-form" onsubmit="fetch('/api/auth/logout',{method:'POST'}).then(()=>location.href='/LoginRequired');return false;">

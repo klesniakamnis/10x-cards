@@ -1,0 +1,16 @@
+@page "/deck"
+@model _10x_cards.Pages.DeckModel
+
+<div class="deck-page">
+    <h1>Moja talia</h1>
+    <div id="deck-error"></div>
+    <div id="deck-empty" hidden>
+        <p>Nie masz jeszcze żadnych fiszek.</p>
+        <p><a href="/create">Dodaj pierwszą fiszkę</a> lub <a href="/">wygeneruj fiszki z tekstu</a>.</p>
+    </div>
+    <div id="deck-container"></div>
+</div>
+
+@section Scripts {
+    <script src="/js/deck.js"></script>
+}
