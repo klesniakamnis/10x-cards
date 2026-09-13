@@ -1,6 +1,6 @@
 namespace _10x_cards.Data;
 
-public class AuthSession
+public class AuthSession : IHasTimestamps
 {
     public Guid Id { get; set; }
     public Guid UserId { get; set; }

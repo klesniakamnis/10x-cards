@@ -9,8 +9,9 @@ using _10x_cards.Services;
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddOpenApi();
+var dbPath = Path.Combine(builder.Environment.ContentRootPath, "db", "10xcards.db");
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
-    options.UseSqlite(builder.Configuration.GetConnectionString("DefaultConnection")));
+    options.UseSqlite($"Data Source={dbPath}"));
 
 builder.Services.AddSingleton<IEmailSender, ConsoleEmailSender>();
 builder.Services.AddSingleton<ITicketStore, DbSessionStore>();
@@ -42,7 +43,8 @@ builder.Services.AddAuthorization(options =>
 
 var app = builder.Build();
 
-Directory.CreateDirectory("./db/");
+var dbDir = Path.Combine(app.Environment.ContentRootPath, "db");
+Directory.CreateDirectory(dbDir);
 
 if (app.Environment.IsDevelopment())
 {
@@ -62,7 +64,7 @@ app.MapGet("/health", () => Results.Ok("healthy"))
     .WithName("HealthCheck")
     .AllowAnonymous();
 
-app.MapGet("/db-health", async (ApplicationDbContext db) =>
+app.MapGet("/db-health", async (ApplicationDbContext db, ILogger<Program> logger) =>
 {
     try
     {
@@ -73,7 +75,8 @@ app.MapGet("/db-health", async (ApplicationDbContext db) =>
     }
     catch (Exception ex)
     {
-        return Results.Json(new { status = "unhealthy", error = ex.Message }, statusCode: 503);
+        logger.LogError(ex, "Database health check failed");
+        return Results.Json(new { status = "unhealthy", database = "error" }, statusCode: 503);
     }
 })
 .WithName("DbHealthCheck")

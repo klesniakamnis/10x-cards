@@ -14,7 +14,7 @@ The project is a bare ASP.NET Core 9.0 minimal API scaffold (`Program.cs`) with 
 
 ## Desired End State
 
-EF Core is wired into the DI container. A `ApplicationDbContext` with `DbSet<User>` and `DbSet<Flashcard>` exists. An initial migration creates both tables. Running `dotnet ef database update` produces a working SQLite database at `./data/10xcards.db`. The `/health` endpoint still returns "healthy". A temporary `/db-health` endpoint confirms the database is reachable.
+EF Core is wired into the DI container. A `ApplicationDbContext` with `DbSet<User>` and `DbSet<Flashcard>` exists. An initial migration creates both tables. Running `dotnet ef database update` produces a working SQLite database at `./db/10xcards.db`. The `/health` endpoint still returns "healthy". A temporary `/db-health` endpoint confirms the database is reachable.
 
 ### Key Discoveries:
 
@@ -89,7 +89,7 @@ Add all EF Core infrastructure in one phase: NuGet packages, entity classes, DbC
 
 **Intent**: Add a connection string pointing to the SQLite database file.
 
-**Contract**: Add `"ConnectionStrings": { "DefaultConnection": "Data Source=./data/10xcards.db" }`.
+**Contract**: Add `"ConnectionStrings": { "DefaultConnection": "Data Source=./db/10xcards.db" }`.
 
 #### 7. Wire DbContext into DI and add DB health check
 
@@ -97,7 +97,7 @@ Add all EF Core infrastructure in one phase: NuGet packages, entity classes, DbC
 
 **Intent**: Register `ApplicationDbContext` with SQLite provider in the service container. Add a `/db-health` endpoint that verifies database connectivity. Ensure the `data/` directory exists at startup.
 
-**Contract**: `builder.Services.AddDbContext<ApplicationDbContext>(...)` using the connection string from config. New `MapGet("/db-health", ...)` endpoint that calls `dbContext.Database.CanConnectAsync()` and returns ok/error. Directory.CreateDirectory for `./data/` before `app.Run()`.
+**Contract**: `builder.Services.AddDbContext<ApplicationDbContext>(...)` using the connection string from config. New `MapGet("/db-health", ...)` endpoint that calls `dbContext.Database.CanConnectAsync()` and returns ok/error. Directory.CreateDirectory for `./db/` before `app.Run()`.
 
 #### 8. Add data/ directory to .gitignore
 
@@ -105,7 +105,7 @@ Add all EF Core infrastructure in one phase: NuGet packages, entity classes, DbC
 
 **Intent**: Exclude the SQLite database file from version control.
 
-**Contract**: Append `data/` to the existing `.gitignore`.
+**Contract**: Append `db/` to the existing `.gitignore`.
 
 #### 9. Create initial migration
 
@@ -120,7 +120,7 @@ Add all EF Core infrastructure in one phase: NuGet packages, entity classes, DbC
 - Project builds without errors: `dotnet build`
 - EF Core migration generates cleanly: `dotnet ef migrations list` shows `InitialCreate`
 - Database update applies without errors: `dotnet ef database update`
-- SQLite file exists at `./data/10xcards.db` after migration
+- SQLite file exists at `./db/10xcards.db` after migration
 - Existing tests (if any) still pass: `dotnet test`
 
 #### Manual Verification:
@@ -148,7 +148,7 @@ Add all EF Core infrastructure in one phase: NuGet packages, entity classes, DbC
 2. Run `dotnet ef database update` — confirms migration applies
 3. Run `dotnet run` and hit `/health` — confirms no regression
 4. Run `dotnet run` and hit `/db-health` — confirms DB connectivity
-5. Open `./data/10xcards.db` with a SQLite viewer — confirm Users and Flashcards tables with expected columns
+5. Open `./db/10xcards.db` with a SQLite viewer — confirm Users and Flashcards tables with expected columns
 
 ## Performance Considerations
 
@@ -173,14 +173,14 @@ This is the first migration on a greenfield project — no existing data, no bac
 
 #### Automated
 
-- [x] 1.1 Project builds without errors
-- [x] 1.2 EF Core migration generates cleanly
-- [x] 1.3 Database update applies without errors
-- [x] 1.4 SQLite file exists at ./data/10xcards.db
-- [x] 1.5 Existing tests still pass
+- [x] 1.1 Project builds without errors — 52e508e
+- [x] 1.2 EF Core migration generates cleanly — 52e508e
+- [x] 1.3 Database update applies without errors — 52e508e
+- [x] 1.4 SQLite file exists at ./db/10xcards.db — 52e508e
+- [x] 1.5 Existing tests still pass — 52e508e
 
 #### Manual
 
-- [x] 1.6 /health endpoint returns "healthy"
-- [x] 1.7 /db-health endpoint returns success
-- [x] 1.8 SQLite DB contains correct tables and columns
+- [x] 1.6 /health endpoint returns "healthy" — 52e508e
+- [x] 1.7 /db-health endpoint returns success — 52e508e
+- [x] 1.8 SQLite DB contains correct tables and columns — 52e508e

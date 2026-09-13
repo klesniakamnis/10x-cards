@@ -1,6 +1,6 @@
 namespace _10x_cards.Data;
 
-public class MagicLinkToken
+public class MagicLinkToken : IHasTimestamps
 {
     public Guid Id { get; set; }
     public required string Token { get; set; }

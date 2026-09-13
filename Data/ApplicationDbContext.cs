@@ -57,15 +57,13 @@ public class ApplicationDbContext(DbContextOptions<ApplicationDbContext> options
     {
         var now = DateTime.UtcNow;
 
-        foreach (var entry in ChangeTracker.Entries()
+        foreach (var entry in ChangeTracker.Entries<IHasTimestamps>()
             .Where(e => e.State is EntityState.Added or EntityState.Modified))
         {
-            entry.Property("UpdatedAt").CurrentValue = now;
+            entry.Entity.UpdatedAt = now;
 
             if (entry.State == EntityState.Added)
-            {
-                entry.Property("CreatedAt").CurrentValue = now;
-            }
+                entry.Entity.CreatedAt = now;
         }
     }
 }
