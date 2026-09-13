@@ -299,6 +299,12 @@ body {
     font-weight: 500;
 }
 
+/* Inline card error */
+.card-error {
+    margin-top: 0.5rem;
+    font-size: 0.85rem;
+}
+
 /* Fade out transition for card removal */
 .fade-out {
     opacity: 0;

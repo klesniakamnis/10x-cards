@@ -16,10 +16,5 @@
 </div>
 
 @section Scripts {
-    <script>
-        document.getElementById('source-text').addEventListener('input', function () {
-            var len = this.value.length;
-            document.getElementById('char-counter').textContent = len.toLocaleString('pl-PL') + ' / 10 000';
-        });
-    </script>
+    <script src="/js/generate.js"></script>
 }

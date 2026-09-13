@@ -370,31 +370,31 @@ No new EF Core migration is needed for S-01. The existing Flashcard schema (Ques
 
 #### Automated
 
-- [x] 2.1 Project builds without errors
-- [x] 2.2 Application starts in Development mode (dev stub active)
+- [x] 2.1 Project builds without errors — 8a593c2
+- [x] 2.2 Application starts in Development mode (dev stub active) — 8a593c2
 
 #### Manual
 
-- [x] 2.3 POST /api/generation with valid text returns proposals (dev stub)
-- [x] 2.4 POST /api/generation with empty text returns 400
-- [x] 2.5 POST /api/generation with >10,000 chars returns 400
-- [x] 2.6 POST /api/generation without auth returns 401
-- [x] 2.7 Real OpenAI integration returns proposals (when API key configured)
+- [x] 2.3 POST /api/generation with valid text returns proposals (dev stub) — 8a593c2
+- [x] 2.4 POST /api/generation with empty text returns 400 — 8a593c2
+- [x] 2.5 POST /api/generation with >10,000 chars returns 400 — 8a593c2
+- [x] 2.6 POST /api/generation without auth returns 401 — 8a593c2
+- [x] 2.7 Real OpenAI integration returns proposals (when API key configured) — 8a593c2
 
 ### Phase 3: Flashcard Creation + Frontend Integration
 
 #### Automated
 
-- [ ] 3.1 Project builds without errors
-- [ ] 3.2 Application starts without errors
+- [x] 3.1 Project builds without errors
+- [x] 3.2 Application starts without errors
 
 #### Manual
 
-- [ ] 3.3 Full end-to-end flow works (paste → generate → accept/reject → summary)
-- [ ] 3.4 Accept creates Flashcard in database
-- [ ] 3.5 Reject removes card without DB record
-- [ ] 3.6 Edit allows modifying Q/A before accepting, saves modified text
-- [ ] 3.7 Character counter and input validation work
-- [ ] 3.8 Loading spinner displays during generation
-- [ ] 3.9 Error message displays on generation failure
-- [ ] 3.10 Summary shows correct count and allows generating more
+- [x] 3.3 Full end-to-end flow works (paste → generate → accept/reject → summary)
+- [x] 3.4 Accept creates Flashcard in database
+- [x] 3.5 Reject removes card without DB record
+- [x] 3.6 Edit allows modifying Q/A before accepting, saves modified text
+- [x] 3.7 Character counter and input validation work
+- [x] 3.8 Loading spinner displays during generation
+- [x] 3.9 Error message displays on generation failure
+- [x] 3.10 Summary shows correct count and allows generating more

@@ -120,6 +120,7 @@ app.MapGet("/weatherforecast", () =>
 
 app.MapAuthEndpoints();
 app.MapGenerationEndpoints();
+app.MapFlashcardEndpoints();
 
 app.MapRazorPages();
 
