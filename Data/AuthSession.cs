@@ -5,6 +5,7 @@ public class AuthSession
     public Guid Id { get; set; }
     public Guid UserId { get; set; }
     public DateTime ExpiresAt { get; set; }
+    public required byte[] TicketData { get; set; }
     public DateTime CreatedAt { get; set; }
     public DateTime UpdatedAt { get; set; }
 

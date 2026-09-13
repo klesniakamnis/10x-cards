@@ -1,5 +1,10 @@
+using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.EntityFrameworkCore;
+using _10x_cards.Auth;
 using _10x_cards.Data;
+using _10x_cards.Endpoints;
+using _10x_cards.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -7,17 +12,46 @@ builder.Services.AddOpenApi();
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseSqlite(builder.Configuration.GetConnectionString("DefaultConnection")));
 
+builder.Services.AddSingleton<IEmailSender, ConsoleEmailSender>();
+builder.Services.AddSingleton<ITicketStore, DbSessionStore>();
+
+builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+    .AddCookie();
+
+builder.Services.AddOptions<CookieAuthenticationOptions>(CookieAuthenticationDefaults.AuthenticationScheme)
+    .Configure<ITicketStore>((options, store) =>
+    {
+        options.Cookie.HttpOnly = true;
+        options.Cookie.SameSite = SameSiteMode.Lax;
+        options.ExpireTimeSpan = TimeSpan.FromDays(30);
+        options.SlidingExpiration = true;
+        options.SessionStore = store;
+        options.Events.OnRedirectToLogin = context =>
+        {
+            context.Response.StatusCode = 401;
+            return Task.CompletedTask;
+        };
+    });
+
+builder.Services.AddAuthorization(options =>
+{
+    options.FallbackPolicy = new AuthorizationPolicyBuilder()
+        .RequireAuthenticatedUser()
+        .Build();
+});
+
 var app = builder.Build();
 
 Directory.CreateDirectory("./db/");
 
-// Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
     app.MapOpenApi();
 }
 
 app.UseHttpsRedirection();
+app.UseAuthentication();
+app.UseAuthorization();
 
 var summaries = new[]
 {
@@ -25,7 +59,8 @@ var summaries = new[]
 };
 
 app.MapGet("/health", () => Results.Ok("healthy"))
-    .WithName("HealthCheck");
+    .WithName("HealthCheck")
+    .AllowAnonymous();
 
 app.MapGet("/db-health", async (ApplicationDbContext db) =>
 {
@@ -41,11 +76,12 @@ app.MapGet("/db-health", async (ApplicationDbContext db) =>
         return Results.Json(new { status = "unhealthy", error = ex.Message }, statusCode: 503);
     }
 })
-.WithName("DbHealthCheck");
+.WithName("DbHealthCheck")
+.AllowAnonymous();
 
 app.MapGet("/weatherforecast", () =>
 {
-    var forecast =  Enumerable.Range(1, 5).Select(index =>
+    var forecast = Enumerable.Range(1, 5).Select(index =>
         new WeatherForecast
         (
             DateOnly.FromDateTime(DateTime.Now.AddDays(index)),
@@ -56,6 +92,8 @@ app.MapGet("/weatherforecast", () =>
     return forecast;
 })
 .WithName("GetWeatherForecast");
+
+app.MapAuthEndpoints();
 
 app.Run();
 

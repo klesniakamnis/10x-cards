@@ -234,30 +234,30 @@ Two migrations total: `AddAuthTables` (Phase 1) creates MagicLinkToken and AuthS
 
 #### Automated
 
-- [x] 1.1 Project builds without errors
-- [x] 1.2 Migration generates cleanly
-- [x] 1.3 Database update applies without errors
-- [x] 1.4 Existing tests still pass
+- [x] 1.1 Project builds without errors — d493931
+- [x] 1.2 Migration generates cleanly — d493931
+- [x] 1.3 Database update applies without errors — d493931
+- [x] 1.4 Existing tests still pass — d493931
 
 #### Manual
 
-- [x] 1.5 SQLite DB contains MagicLinkTokens and AuthSessions tables
-- [x] 1.6 /health and /db-health still work
+- [x] 1.5 SQLite DB contains MagicLinkTokens and AuthSessions tables — d493931
+- [x] 1.6 /health and /db-health still work — d493931
 
 ### Phase 2: Auth Middleware + Endpoints
 
 #### Automated
 
-- [ ] 2.1 Project builds without errors
-- [ ] 2.2 Migration applies without errors
-- [ ] 2.3 Existing tests still pass
+- [x] 2.1 Project builds without errors
+- [x] 2.2 Migration applies without errors
+- [x] 2.3 Existing tests still pass
 
 #### Manual
 
-- [ ] 2.4 GET /health returns 200
-- [ ] 2.5 GET /weatherforecast returns 401
-- [ ] 2.6 POST /api/auth/login logs magic link to console
-- [ ] 2.7 GET callback URL signs in and redirects
-- [ ] 2.8 GET /api/auth/me returns user info after sign-in
-- [ ] 2.9 POST /api/auth/logout clears session
-- [ ] 2.10 Expired/used token returns generic error
+- [x] 2.4 GET /health returns 200
+- [x] 2.5 GET /weatherforecast returns 401
+- [x] 2.6 POST /api/auth/login logs magic link to console
+- [x] 2.7 GET callback URL signs in and redirects
+- [x] 2.8 GET /api/auth/me returns user info after sign-in
+- [x] 2.9 POST /api/auth/logout clears session
+- [x] 2.10 Expired/used token returns generic error
