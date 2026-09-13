@@ -21,6 +21,15 @@ public class ApplicationDbContext(DbContextOptions<ApplicationDbContext> options
             entity.Property(f => f.Source)
                 .HasConversion<string>();
 
+            entity.Property(f => f.EasinessFactor)
+                .HasDefaultValue(2.5);
+
+            entity.Property(f => f.Interval)
+                .HasDefaultValue(0);
+
+            entity.Property(f => f.Repetitions)
+                .HasDefaultValue(0);
+
             entity.HasOne(f => f.User)
                 .WithMany(u => u.Flashcards)
                 .HasForeignKey(f => f.UserId)
@@ -63,7 +72,12 @@ public class ApplicationDbContext(DbContextOptions<ApplicationDbContext> options
             entry.Entity.UpdatedAt = now;
 
             if (entry.State == EntityState.Added)
+            {
                 entry.Entity.CreatedAt = now;
+
+                if (entry.Entity is Flashcard flashcard && flashcard.NextReviewDate == default)
+                    flashcard.NextReviewDate = now;
+            }
         }
     }
 }

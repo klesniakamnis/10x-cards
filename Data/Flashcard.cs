@@ -14,5 +14,10 @@ public class Flashcard : IHasTimestamps
     public DateTime CreatedAt { get; set; }
     public DateTime UpdatedAt { get; set; }
 
+    public double EasinessFactor { get; set; } = 2.5;
+    public int Interval { get; set; }
+    public int Repetitions { get; set; }
+    public DateTime NextReviewDate { get; set; }
+
     public User User { get; set; } = null!;
 }

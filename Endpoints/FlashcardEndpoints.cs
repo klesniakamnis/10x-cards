@@ -1,6 +1,7 @@
 using System.Security.Claims;
 using Microsoft.EntityFrameworkCore;
 using _10x_cards.Data;
+using _10x_cards.Services;
 
 namespace _10x_cards.Endpoints;
 
@@ -100,6 +101,43 @@ public static class FlashcardEndpoints
             return Results.NoContent();
         });
 
+        group.MapGet("/due", async (ApplicationDbContext db, HttpContext httpContext) =>
+        {
+            var userId = Guid.Parse(httpContext.User.FindFirstValue(ClaimTypes.NameIdentifier)!);
+            var now = DateTime.UtcNow;
+
+            var flashcards = await db.Flashcards
+                .Where(f => f.UserId == userId && f.NextReviewDate <= now)
+                .OrderBy(f => f.NextReviewDate)
+                .Select(f => new FlashcardResponse(f.Id, f.Question, f.Answer, f.Source.ToString(), f.CreatedAt, f.UpdatedAt))
+                .ToListAsync();
+
+            return Results.Ok(flashcards);
+        });
+
+        group.MapPost("/{id:guid}/review", async (Guid id, ReviewRequest request, ApplicationDbContext db, HttpContext httpContext) =>
+        {
+            if (request.Grade < 0 || request.Grade > 5)
+                return Results.Json(new { error = "Grade must be between 0 and 5." }, statusCode: 400);
+
+            var userId = Guid.Parse(httpContext.User.FindFirstValue(ClaimTypes.NameIdentifier)!);
+
+            var flashcard = await db.Flashcards.FirstOrDefaultAsync(f => f.Id == id && f.UserId == userId);
+            if (flashcard is null)
+                return Results.Json(new { error = "Flashcard not found." }, statusCode: 404);
+
+            var result = Sm2Service.Calculate(flashcard.EasinessFactor, flashcard.Interval, flashcard.Repetitions, request.Grade);
+
+            flashcard.EasinessFactor = result.EasinessFactor;
+            flashcard.Interval = result.Interval;
+            flashcard.Repetitions = result.Repetitions;
+            flashcard.NextReviewDate = result.NextReviewDate;
+
+            await db.SaveChangesAsync();
+
+            return Results.Ok(new FlashcardResponse(flashcard.Id, flashcard.Question, flashcard.Answer, flashcard.Source.ToString(), flashcard.CreatedAt, flashcard.UpdatedAt));
+        });
+
         return app;
     }
 }
@@ -107,5 +145,7 @@ public static class FlashcardEndpoints
 public record CreateFlashcardRequest(string Question, string Answer, string Source);
 
 public record UpdateFlashcardRequest(string Question, string Answer);
+
+public record ReviewRequest(int Grade);
 
 public record FlashcardResponse(Guid Id, string Question, string Answer, string Source, DateTime CreatedAt, DateTime UpdatedAt);
