@@ -206,23 +206,23 @@ For test #6 (null response text), `FakeChatClient` needs a mode where `ResponseT
 
 #### Automated
 
-- [x] 1.1 `dotnet build` succeeds for the solution (both projects)
-- [x] 1.2 `dotnet test` runs from repo root with zero tests
+- [x] 1.1 `dotnet build` succeeds for the solution (both projects) — bf0341d
+- [x] 1.2 `dotnet test` runs from repo root with zero tests — bf0341d
 
 #### Manual
 
-- [x] 1.3 Solution file includes both projects
+- [x] 1.3 Solution file includes both projects — bf0341d
 
 ### Phase 2: SM-2 unit tests
 
 #### Automated
 
-- [ ] 2.1 `dotnet test --filter "FullyQualifiedName~Sm2ServiceTests"` — all 11 tests pass
-- [ ] 2.2 `dotnet build` — solution builds without warnings
+- [x] 2.1 `dotnet test --filter "FullyQualifiedName~Sm2ServiceTests"` — all 11 tests pass
+- [x] 2.2 `dotnet build` — solution builds without warnings
 
 #### Manual
 
-- [ ] 2.3 Oracle values match independent hand-computation from SM-2 spec
+- [x] 2.3 Oracle values match independent hand-computation from SM-2 spec
 
 ### Phase 3: AI proposal parser unit tests
 
