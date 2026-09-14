@@ -69,6 +69,9 @@ document.addEventListener('DOMContentLoaded', function () {
         sourceText.disabled = loading;
         if (loading) {
             proposalsContainer.innerHTML = '<div class="loading-spinner">Generowanie fiszek...</div>';
+        } else {
+            var spinner = proposalsContainer.querySelector('.loading-spinner');
+            if (spinner) spinner.remove();
         }
     }
 
