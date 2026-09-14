@@ -217,21 +217,21 @@ For test #6 (null response text), `FakeChatClient` needs a mode where `ResponseT
 
 #### Automated
 
-- [x] 2.1 `dotnet test --filter "FullyQualifiedName~Sm2ServiceTests"` — all 11 tests pass
-- [x] 2.2 `dotnet build` — solution builds without warnings
+- [x] 2.1 `dotnet test --filter "FullyQualifiedName~Sm2ServiceTests"` — all 11 tests pass — 0d16b7b
+- [x] 2.2 `dotnet build` — solution builds without warnings — 0d16b7b
 
 #### Manual
 
-- [x] 2.3 Oracle values match independent hand-computation from SM-2 spec
+- [x] 2.3 Oracle values match independent hand-computation from SM-2 spec — 0d16b7b
 
 ### Phase 3: AI proposal parser unit tests
 
 #### Automated
 
-- [ ] 3.1 `dotnet test --filter "FullyQualifiedName~OpenAiFlashcardGeneratorTests"` — all 14 tests pass
-- [ ] 3.2 `dotnet test` — full suite (25 tests) passes from repo root
-- [ ] 3.3 `dotnet build` — solution builds without warnings
+- [x] 3.1 `dotnet test --filter "FullyQualifiedName~OpenAiFlashcardGeneratorTests"` — all 14 tests pass
+- [x] 3.2 `dotnet test` — full suite (25 tests) passes from repo root
+- [x] 3.3 `dotnet build` — solution builds without warnings
 
 #### Manual
 
-- [ ] 3.4 FakeChatClient is reusable in shared Fakes/ directory
+- [x] 3.4 FakeChatClient is reusable in shared Fakes/ directory
